@@ -1,4 +1,4 @@
-let max_particles = 3500;
+let max_particles = 350;
 
 var tela = document.createElement("canvas");
 tela.width = $(window).width();
@@ -22,13 +22,13 @@ class Particle {
     this.w = $(window).width();
     this.h = $(window).height();
     this.radius = random > 0.2 ? Math.random() * 1 : Math.random() * 3;
-    this.color = random > 0.2 ? "black" : "crimson";
+    this.color = random > 0.2 ? "#2E4765" : "#b5ff00";
     this.radius = random > 0.8 ? Math.random() * 2 : this.radius;
-    this.color = random > 0.8 ? "black" : this.color;
+    this.color = random > 0.8 ? "#2E4765" : this.color;
 
     // this.color  = random > .1 ? "#ffae00" : "#f0ff00" // Alien
-    this.variantx1 = Math.random() * 300;
-    this.variantx2 = Math.random() * 400;
+    this.variantx1 = Math.random() * 100;
+    this.variantx2 = Math.random() * 100;
     this.varianty1 = Math.random() * 100;
     this.varianty2 = Math.random() * 120;
   }
@@ -76,14 +76,15 @@ function popolate(num) {
 
 function clear() {
   canvas.globalAlpha = 0.05;
-  canvas.fillStyle = "#000155";
-  canvas.fillStyle = "#000021"; // Alien
+  canvas.fillStyle = "#ff000000";
+  canvas.fillStyle = "#ff000000"; // Alien
   canvas.fillRect(0, 0, tela.width, tela.height);
   canvas.globalAlpha = 1;
 }
 
 function update() {
   particles = particles.filter(function (p) {
+    
     return p.move();
   });
   if (particles.length < init_num) {
